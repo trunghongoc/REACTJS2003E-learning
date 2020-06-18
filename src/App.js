@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Button from './components/Button'
+import List from './components/List'
+import Input from './components/Input'
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      visible: true,
+      bg: 'green'
+    }
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React very happy
-        </a>
-      </header>
-    </div>
-  );
+  toggleBg = () => {
+    const newBg = this.state.bg === 'green' ? 'red' : 'green'
+    this.setState({
+      bg: newBg
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Button
+          count={2}
+          bg={this.state.bg}/>
+
+        <button onClick={() => this.toggleBg()}>Thay đổi màu</button>
+
+        <List/>
+
+        <Input/>
+      </div>
+    );
+  }
 }
 
 export default App;
