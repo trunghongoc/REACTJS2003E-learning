@@ -1,25 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Counter from './components/Counter'
+import CounterByReducer from './components/CounterByReducer'
 
 function App() {
+  const [isShowCounter, setIsShowCounter] = useState(true)
+
+  const showCounterButton = () => {
+    setIsShowCounter(!isShowCounter)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React very happy
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={showCounterButton}>TOGGLE SHOW COUNTER BUTTON</button>
+      { isShowCounter && <Counter/> }
+
+      <CounterByReducer/>
+    </>
   );
 }
 
